@@ -31,7 +31,7 @@ const postPlant =  async(req, res) => {
 }
 
 const getPlants = async (req, res) => {
-    const plants = await Plant.find();
+    const plants = await Plant.find().sort({ updatedAt : -1});
     res.json({
         success: true,
         data: plants,
@@ -81,7 +81,7 @@ const putPlantId = async (req, res) => {
     })
 }
 
-const deletePlantId =  async (req, res) =>{
+const deletePlantId =  async(req, res) =>{
     const{id} = req.params
   
 await Plant.deleteOne({ _id :id})
